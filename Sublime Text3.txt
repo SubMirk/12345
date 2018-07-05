@@ -1,4 +1,3 @@
-Sublime Text3.txt
 一、快速生成HTML5的头部信息的步骤：
 
 1.Ctrl + N，新建一个文档；
