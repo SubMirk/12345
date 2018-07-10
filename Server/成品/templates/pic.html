@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+<body>
+	{%if all_pic != -1 %}
+	    {% for i in all_pic %}
+	    	<img src="./static/mzitu/{{title}}/{{i}}" alt="{{i}}"/>
+			<br>
+   		{% endfor %}
+	{% else %}
+	    <img src="./static/mzitu/{{title}}" alt="{{title}}"/>
+	{% endif %}
+    
+</body>
+</html>
