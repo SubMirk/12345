@@ -2,8 +2,8 @@
 import smtplib  #加载smtplib模块
 from email.mime.text import MIMEText
 from email.utils import formataddr
-my_sender='zqh1743938373@163.com' #发件人邮箱账号，为了后面易于维护，所以写成了变量
-my_user='3156758772@qq.com' #收件人邮箱账号，为了后面易于维护，所以写成了变量
+my_sender='xxx@163.com' #发件人邮箱账号，为了后面易于维护，所以写成了变量
+my_user='xxx@qq.com' #收件人邮箱账号，为了后面易于维护，所以写成了变量
 def mail():
     ret=True
     try:
@@ -13,7 +13,7 @@ def mail():
         msg['Subject']="标题" #邮件的主题，也可以说是标题
 
         server=smtplib.SMTP("smtp.163.com",25)  #发件人邮箱中的SMTP服务器，端口是25
-        server.login(my_sender,"aptx4869")    #括号中对应的是发件人邮箱账号、邮箱密码
+        server.login(my_sender,"xxx")    #括号中对应的是发件人邮箱账号、邮箱密码
         server.sendmail(my_sender,[my_user,],msg.as_string())   #括号中对应的是发件人邮箱账号、收件人邮箱账号、发送邮件
         server.quit()   #这句是关闭连接的意思
     except Exception:   #如果try中的语句没有执行，则会执行下面的ret=False
