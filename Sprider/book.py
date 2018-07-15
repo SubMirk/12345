@@ -3,6 +3,7 @@ import os
 import requests
 import re
 from urllib.request import urlopen
+import urllib.error
 import time
 
 
@@ -37,13 +38,16 @@ def gethtml(url):
 	# browser.quit()
 	# return html
 	try:
-		request = urlopen(url, timeout=60) #这里是要读取内容的url  
-		content = request.read().decode('utf-8') #读取，一般会在这里报异常
-		request.close() #记得要关闭
-	except Exception,e:
-        print str(e)
-        fileObject = open(bookpath + '/' + error.txt, 'a', encoding='utf-8')
+		response = urlopen(url, timeout = 60) #这里是要读取内容的url  
+		content = response.read().decode('utf-8') #读取，一般会在这里报异常
+		response.close() #记得要关闭
+	except urllib.error.URLError as e:
+		print (e.reason)
+		content = ''
+		fileObject = open(bookpath + '/error.txt', 'w', encoding='utf-8')
+		fileObject.write(str(e) + '\n')
 		fileObject.write(url) 
+		fileObject.write("\n\n") 
 		fileObject.close()
 
 	return content
@@ -96,6 +100,7 @@ def do_task(path, index):
 
 
 if __name__ == '__main__':
-	# for i in range(243, 1,-1):
-	for i in range(29, 245):
+
+	for i in range(61, 246):
 		do_task(bookpath, i)
+		time.sleep(i % 5)
